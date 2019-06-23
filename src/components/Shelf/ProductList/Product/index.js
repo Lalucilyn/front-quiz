@@ -48,8 +48,6 @@ render() {
       className="shelf-item"
       onClick={() => addProduct(product)}
       data-sku={product.sku}
-      onMouseEnter={this.toggleHoverState}
-      onMouseLeave={this.toggleHoverState}
     >
       {product.isFreeShipping && (
         <div className="shelf-stopper">Envío gratis</div>
@@ -58,6 +56,7 @@ render() {
         classes="shelf-item__thumb"
         src={require(`../../../../static/products/${product.sku}_${number}.jpg`)}
         alt={product.title}
+        hoverFunction={this.toggleHoverState}
       />
       <p className="shelf-item__title">{product.title}</p>
       <div className="shelf-item__price">
