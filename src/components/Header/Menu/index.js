@@ -20,8 +20,8 @@ const menu = (props) => {
       <ul className="menu-items">
         {categories.map(category => 
           <li
-          onMouseEnter={() => props.toggleCategoryOpen(category.name)} 
-          onMouseLeave={() => props.toggleCategoryOpen(category.name)}>
+          onPointerEnter={() => props.toggleCategoryOpen(category.name)} 
+          onPointerLeave={() => props.toggleCategoryOpen(category.name)}>
           <a href={`/${category.name}`}>{category.name.toUpperCase()}</a>
             {(props.openCategory === category.name && category.subcategories) && 
               <ul className="dropdown">
