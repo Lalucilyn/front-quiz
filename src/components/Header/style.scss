@@ -1,8 +1,9 @@
 .main-header {
   height: 60px;
   background-color: black;
-  position: relative;
-  padding-right: 82px;
+  position: fixed;
+  width: 100%;
+  top: 0;
   a {
     color: white;
     text-decoration: none;
