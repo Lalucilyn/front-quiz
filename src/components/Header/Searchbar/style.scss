@@ -1,0 +1,9 @@
+#searchbar {
+  background-image: url('../../../static/search-icon.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding: 8px;
+  border-radius: 4px;
+  padding-right: 24px;
+  max-width: calc(100% - 48px);
+}

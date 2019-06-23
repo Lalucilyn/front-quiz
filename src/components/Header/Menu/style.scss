@@ -1,0 +1,57 @@
+.menu-items {
+  background-color: black;
+  margin-top: 0px;
+  padding: 0px;
+  width: 100%;
+  list-style: none;
+  li {
+    position: relative;
+    width: 100%;
+    display: block;
+    line-height: 40px;
+    margin: 0px;
+  }
+  .dropdown {		
+    padding-left: 0px;
+    padding-right: 58px;
+    position: absolute;
+    background: black;
+    top: 0;
+    z-index: 2;
+    left: 100%;
+    overflow: hidden;
+    animation: fade 1s;
+    li {
+      line-height: 40px;
+      display: block;
+	  margin: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+.menu-items {
+	position: static;
+	margin: 0;
+	margin-left: calc(4.5% + 92px);
+	padding: 0;
+	display: flex;
+	align-items: center;
+	li {
+	  margin-right: 12px;
+	  line-height: 60px;
+	  width: auto;
+	}
+	.dropdown {
+		top: 60px;
+		left: 0;
+		padding: 0px 60px 12px 12px;
+	}
+}
+
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1};
+}
