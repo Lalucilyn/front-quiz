@@ -1,17 +1,30 @@
 import React, { Component } from 'react';
 import MenuIcon from '../../static/menu_icon.png'
+import Logo from '../../static/levis_logo.png'
+import Searchbar from './Searchbar'
 import './style.scss';
-
+import Menu from './Menu'
 class Header extends Component {
   state = {
-  	openMenu: true, 
-  	openCategory: null,
-  	mobile: false,
+  	openMenu: false, 
+  	openCategory: 'mujer',
+  	mobile: false
   }
 
-  detectIfWeAreOnMobile() {
-  	this.setState({mobile: window.innerWidth < 780});
+  componentDidMount() {
+  	this.detectIfWeAreOnMobile()
+  	window.addEventListener('resize', this.detectIfWeAreOnMobile.bind(this));
 		}
+
+		componentWillUnmount() {
+  	window.removeEventListener('resize', this.detectIfWeAreOnMobile.bind(this));
+		} 
+
+  detectIfWeAreOnMobile() {
+  	const isItAlreadyOpenedAndOnMobile = this.state.mobile && this.state.openMenu
+  	const isItOnMobileNow = window.innerWidth < 640
+  	this.setState({mobile: isItOnMobileNow, openMenu: isItOnMobileNow ? isItAlreadyOpenedAndOnMobile : true})
+ 	}
 
   toggleDropdownMenuOpen = () => {
   	this.setState({openMenu: !this.state.openMenu, openCategory: null})
@@ -22,55 +35,16 @@ class Header extends Component {
   	this.setState({openCategory: isTheCategoryAlreadyOpen ? null : category})
   }
 
-  componentDidMount() {
-  	window.addEventListener('resize', this.detectIfWeAreOnMobile.bind(this));
-		}
-
-componentWillUnmount() {
-  window.removeEventListener('resize', this.detectIfWeAreOnMobile.bind(this));
-} 
-
-  render() {
-  	const categories = [
-  	  {
-  	  	name: 'hombre',
-  	  	subcategories: ['remeras', 'jeans']
-  	  },
-  	  {
-  	  	name: 'mujer',
-  	  	subcategories: ['remeras', 'jeans']
-  	  },
-  	  {
-  	  	name: 'contacto'
-  	  }
-  	]
-    
+	 render() {
   return (
  	<header className="main-header">
- 	 <button onClick={this.toggleDropdownMenuOpen}>
- 	  <img src={MenuIcon} alt="menú" />
- 	 </button>
- 		{this.state.openMenu && 
- 			<div>
- 			<ul>
- 				{categories.map(category => 
- 					<li 
- 					onMouseEnter={() => this.toggleCategoryOpen(category.name)} 
- 					onMouseLeave={() => this.toggleCategoryOpen(category.name)}>
- 					<a href={`/${category.name}`}>{category.name}</a>
- 						{(this.state.openCategory === category.name && category.subcategories) && 
- 							<ul>
- 								{category.subcategories.map(subcategory => <li>
- 									<a href={`/${category.name}/${subcategory}`}>{subcategory}</a>
- 								</li>)}
- 							</ul>
- 						}				
- 					</li>
- 				)}
- 			</ul>
- 			<input type="search" />
- 			</div>
- 		}	
+ 			<img id="logo" src={Logo} alt="Logo de Levi's"/>
+ 			{this.state.mobile && <button onClick={this.toggleDropdownMenuOpen}><img src={MenuIcon} alt="Menú desplegable"/></button>}
+ 			{this.state.openMenu && 
+ 				<div className="header-items">
+ 					<Menu toggleCategoryOpen={this.toggleCategoryOpen} openCategory={this.state.openCategory}/>
+ 					<Searchbar />
+ 				</div>}
  	</header>
 
     );

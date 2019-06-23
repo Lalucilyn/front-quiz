@@ -1,6 +1,18 @@
 .main-header {
   height: 60px;
   background-color: black;
+  position: relative;
+  padding-right: 82px;
+  a {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      color: gray;
+    } 
+  }
+  #logo {
+    display: none;
+  }
   button {
     height: 100%;
     background: none;
@@ -12,4 +24,42 @@
       width: auto;
     }
   }
+  .header-items {
+    width: 40%;
+    z-index: 1;
+    position: absolute;
+    background: black;
+    padding: 0px 0px 12px 12px;
+    flex-direction: column;
+    opacity: 1;
+    animation: slide 1s;
+  }
+}
+
+@media screen and (min-width: 640px) {
+.main-header {
+  #logo {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: auto;
+  }
+  .header-items {
+    position: static;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0px;
+  }
+}
+}
+
+@keyframes slide {
+  from {left: -60%;};
+  to {left: 0;}
 }
