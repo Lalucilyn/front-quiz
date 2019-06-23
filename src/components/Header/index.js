@@ -7,7 +7,7 @@ import Menu from './Menu'
 class Header extends Component {
   state = {
   	openMenu: false, 
-  	openCategory: 'mujer',
+  	openCategory: null,
   	mobile: false
   }
 
