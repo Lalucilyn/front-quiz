@@ -6,22 +6,22 @@ import MenuIcon from '../../static/menu_icon.png'
 import './style.scss';
 
 class Header extends Component {
- state = {
-  openMenu: false, 
-  openCategory: null,
-  mobile: false
- }
+  state = {
+    openMenu: false, 
+    openCategory: null,
+    mobile: false
+  }
 	
 	componentDidMount() {
-  this.detectIfWeAreOnMobile()
-  window.addEventListener('resize', this.detectIfWeAreOnMobile.bind(this));
+    this.detectIfWeAreOnMobile()
+    window.addEventListener('resize', this.detectIfWeAreOnMobile.bind(this));
 	}
 
 	componentWillUnmount() {
-  window.removeEventListener('resize', this.detectIfWeAreOnMobile.bind(this));
+    window.removeEventListener('resize', this.detectIfWeAreOnMobile.bind(this));
 	} 
 
- detectIfWeAreOnMobile() {
+ detectIfWeAreOnMobile = () => {
   const isItAlreadyOpenedAndOnMobile = this.state.mobile && this.state.openMenu
   const isItOnMobileNow = window.innerWidth < 640
   this.setState({mobile: isItOnMobileNow, openMenu: isItOnMobileNow ? isItAlreadyOpenedAndOnMobile : true})
@@ -36,7 +36,7 @@ class Header extends Component {
   this.setState({openMenu: !this.state.openMenu, openCategory: null})
  }
 
-	render() {
+render() {
   return (
  		<header className="main-header">
  			<img id="logo" src={Logo} alt="Logo de Levi's"/>

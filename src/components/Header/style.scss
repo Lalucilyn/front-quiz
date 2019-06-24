@@ -1,67 +1,72 @@
 .main-header {
-  height: 60px;
-  background-color: black;
-  position: fixed;
-  width: calc(100% - 60px);
-  top: 0;
-  z-index: 1;
-  a {
-    color: white;
-    text-decoration: none;
-    &:hover {
-      color: gray;
-    } 
+ height: 60px;
+ background-color: black;
+ position: fixed;
+ width: calc(100% - 60px);
+ top: 0;
+ z-index: 1;
+ 
+ a {
+  color: white;
+  text-decoration: none;
+  &:hover {
+   color: gray;
+  } 
+ }
+
+ button {
+  height: 100%;
+  background: none;
+  width: 60px;
+  border: none;
+  padding: 10px;
+  
+  img {
+   height: 40px;
+   width: auto;
   }
-  #logo {
-    display: none;
-  }
-  button {
-    height: 100%;
-    background: none;
-    width: 60px;
-    border: none;
-    padding: 10px;
-    img {
-      height: 40px;
-      width: auto;
-    }
-  }
-  .header-items {
-    width: 40%;
-    z-index: 1;
-    position: absolute;
-    background: black;
-    padding: 0px 0px 12px 12px;
-    flex-direction: column;
-    opacity: 1;
-    animation: slide 1s;
-  }
+ }
+
+ .header-items {
+  width: 40%;
+  position: absolute;
+  background: black;
+  padding: 0px 0px 12px 12px;
+  flex-direction: column;
+  opacity: 1;
+  animation: slide 1s;
+ }
+ 
+ #logo {
+  display: none;
+ }
 }
 
 @media screen and (min-width: 640px) {
-.main-header {
-  #logo {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 80px;
-    height: auto;
-  }
+ .main-header {
   .header-items {
-    position: static;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    padding: 0px;
+   position: static;
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   height: 100%;
+   padding: 0px;
   }
-}
+  
+  #logo {
+   display: block;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 80px;
+   height: auto;
+  }
+ }
 }
 
 @keyframes slide {
-  from {left: -60%;};
-  to {left: 0;}
+ from {left: -60%;};
+ to {left: 0;}
 }
