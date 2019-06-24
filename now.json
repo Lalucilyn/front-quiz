@@ -1,9 +1,0 @@
-{
-    "name": "deploy-to-test-on-phone",
-    "builds": [
-        { "src": "app.js", "use": "@now/node" }
-    ],
-    "routes": [
-        { "src": "/(.*)", "dest": "app.js" }
-    ]
-}
